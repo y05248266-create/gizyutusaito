@@ -1,6 +1,5 @@
 {
-  "password": "tech2026",
-  "site_title": "技術・情報科 学習ポータル",
+  "site_title": "技術 学習サイト",
   "site_subtitle": "自分の学年を選び、指示された番号のゾーンを開いてください",
   "notices": [
     {
@@ -32,9 +31,7 @@
               "url": "https://example.com",
               "description": "授業終了5分前になったらここから送信してください。"
             }
-          ],
-          "pdf_items": [],
-          "code_items": []
+          ]
         },
         {
           "zone_number": "②",
@@ -48,9 +45,7 @@
               "url": "https://example.com",
               "description": "挽き始めの角度と力の入れ方を確認しよう。"
             }
-          ],
-          "pdf_items": [],
-          "code_items": []
+          ]
         }
       ]
     },
@@ -69,17 +64,13 @@
               "url": "https://example.com",
               "description": "スイッチをON/OFFして数値の変化を確かめよう。"
             }
-          ],
-          "pdf_items": [],
-          "code_items": []
+          ]
         },
         {
           "zone_number": "②",
           "zone_title": "Pythonプログラミング入門（条件分岐）",
           "field": "情報の技術",
           "instruction": "下のサンプルコードをコピーして、プログラムを動かしてみよう。",
-          "web_items": [],
-          "pdf_items": [],
           "code_items": [
             {
               "language": "Python",
@@ -97,10 +88,7 @@
           "zone_number": "①",
           "zone_title": "計測・制御のプログラミング",
           "field": "情報の技術",
-          "instruction": "センサの値によってLEDやモーターを制御する課題に取り組みます。",
-          "web_items": [],
-          "pdf_items": [],
-          "code_items": []
+          "instruction": "センサの値によってLEDやモーターを制御する課題に取り組みます。"
         }
       ]
     }
