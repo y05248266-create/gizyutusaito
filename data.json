@@ -1,6 +1,6 @@
 {
   "site_title": "技術授業サイト",
-  "site_subtitle": "連絡：",
+  "site_subtitle": "連絡はページ下にあります。",
   "mission": {
     "active": false,
     "target": "全学年 共通ガイダンス",
@@ -18,7 +18,16 @@
   ],
   "materials": [
     {
+      "tab": "1年"
+    },
+    {
+      "tab": "2年"
+    },
+    {
       "tab": "3年"
     }
+  ],
+  "news": [
+    {}
   ]
 }
