@@ -4,117 +4,119 @@ media:
 
 content:
   - name: tech_portal
-    label: 技術科ポータル管理（パスワード・授業・コード・PDF）
+    label: 技術科ポータル管理（連絡事項・学年別番号ゾーン編集）
     type: file
     path: data.json
     fields:
       - name: password
-        label: 閲覧パスワード（空欄にするとパスワードなしで公開されます）
+        label: 閲覧パスワード（空欄にするとパスワードなしで公開）
         type: string
       - name: site_title
         label: サイトタイトル（例：〇〇中学校 技術科ポータル）
         type: string
       - name: site_subtitle
-        label: サブタイトル（例：情報・プログラミング・ものづくり学習サイト）
+        label: サブタイトル（例：授業用プリント・学習サイト・動画まとめ）
         type: string
-      - name: mission
-        label: 本日の授業ミッション（一番上に大きく表示されます）
-        type: object
-        fields:
-          - name: active
-            label: ミッションを表示する
-            type: boolean
-          - name: target
-            label: 対象（例：2年1組〜4組 情報分野）
-            type: string
-          - name: goal
-            label: 今日のめあて・課題内容
-            type: text
-          - name: submit_label
-            label: 提出ボタンの文字（例：課題提出フォームを開く）
-            type: string
-          - name: submit_url
-            label: 提出先のURL（空欄ならボタン非表示）
-            type: string
-      - name: checklist
-        label: 提出前セルフチェックリスト（生徒が画面でチェックできます）
-        type: object
-        list: true
-        fields:
-          - name: item
-            label: チェック項目（例：保存時のファイル名を「クラス_番号_氏名」にしたか）
-            type: string
-      - name: links
-        label: 学習Webアプリ・ツール・参考サイト（タブ自動振り分け）
-        type: object
-        list: true
-        fields:
-          - name: tab
-            label: 学年・分野タブ名（例：1年・ものづくり / 2年・情報 / 3年・プログラム / 共通）
-            type: string
-          - name: badge
-            label: ラベル（例：自作教材、実習ツール、動画解説）
-            type: string
-          - name: title
-            label: サイト・アプリ名
-            type: string
-          - name: url
-            label: URL（https://...）
-            type: string
-          - name: description
-            label: 説明文（任意）
-            type: string
-      - name: materials
-        label: 配布プリント・ワークシートPDF（タブ自動振り分け）
-        type: object
-        list: true
-        fields:
-          - name: tab
-            label: 学年・分野タブ名（例：1年・ものづくり / 2年・情報 / 3年・プログラム / 共通）
-            type: string
-          - name: badge
-            label: 種類（例：ワークシート、設計図、操作マニュアル）
-            type: string
-          - name: title
-            label: 資料タイトル
-            type: string
-          - name: description
-            label: 補足説明（任意）
-            type: string
-          - name: file
-            label: PDFやファイルを選択（ドラッグ＆ドロップ可）
-            type: file
-      - name: codes
-        label: サンプルコード配布（ワンクリックコピー機能付き）
-        type: object
-        list: true
-        fields:
-          - name: tab
-            label: 学年・分野タブ名（例：2年・情報 / 3年・プログラム / 共通）
-            type: string
-          - name: language
-            label: 言語・種類（例：Python / JavaScript / HTML / Scratch手順）
-            type: string
-          - name: title
-            label: コードのタイトル（例：信号機制御の基本プログラム）
-            type: string
-          - name: description
-            label: 解説・使い方（任意）
-            type: string
-          - name: code
-            label: プログラムコード本体
-            type: text
-      - name: news
-        label: 授業連絡・お知らせ
+      - name: notices
+        label: 【一番上に表示】連絡事項・お知らせ
         type: object
         list: true
         fields:
           - name: date
-            label: 日付（例：2026.11.26）
+            label: 日付（例：11/26）
             type: string
+          - name: important
+            label: 重要マークをつける
+            type: boolean
           - name: title
-            label: 見出し
+            label: 連絡タイトル
             type: string
           - name: body
-            label: 本文
+            label: 連絡内容（任意）
             type: text
+      - name: grades
+        label: 学年別ページ（1年・2年・3年など）
+        type: object
+        list: true
+        fields:
+          - name: grade_name
+            label: 学年タブ名（例：1年、2年、3年）
+            type: string
+          - name: zones
+            label: 授業ゾーン一覧（先生から指示された番号のゾーン）
+            type: object
+            list: true
+            fields:
+              - name: zone_number
+                label: 番号・記号（例：①、②、1、2、A など）
+                type: string
+              - name: zone_title
+                label: ゾーン名・単元タイトル（例：2進数と情報量の仕組み）
+                type: string
+              - name: field
+                label: 分野（選択してください）
+                type: select
+                options:
+                  values:
+                    - 材料と加工の技術
+                    - エネルギー変換の技術
+                    - 生物育成の技術
+                    - 情報の技術
+                    - 共通・ガイダンス
+              - name: instruction
+                label: この時間の進め方・指示メモ（任意）
+                type: text
+              - name: web_items
+                label: 【学習サイト・動画・提出URL】このゾーンに入れるリンク一括登録
+                type: object
+                list: true
+                fields:
+                  - name: kind
+                    label: 種類を選択
+                    type: select
+                    options:
+                      values:
+                        - 学習サイト・アプリ
+                        - 解説動画
+                        - 課題提出・アンケート
+                        - 参考ページ
+                  - name: title
+                    label: 表示タイトル（例：2進数変換シミュレーター）
+                    type: string
+                  - name: url
+                    label: URL（https://...）
+                    type: string
+                  - name: description
+                    label: 補足説明（任意）
+                    type: string
+              - name: pdf_items
+                label: 【配布プリント・PDF】このゾーンに入れるファイル一括登録
+                type: object
+                list: true
+                fields:
+                  - name: badge
+                    label: ラベル（例：ワークシート、解説プリント、設計図）
+                    type: string
+                  - name: title
+                    label: プリント名
+                    type: string
+                  - name: description
+                    label: 補足説明（任意）
+                    type: string
+                  - name: file
+                    label: PDFやファイルを選択（ドラッグ＆ドロップ可）
+                    type: file
+              - name: code_items
+                label: 【サンプルコード】このゾーンに入れるプログラム（必要な場合のみ）
+                type: object
+                list: true
+                fields:
+                  - name: language
+                    label: 言語（例：Python / JavaScript / HTML）
+                    type: string
+                  - name: title
+                    label: コードのタイトル
+                    type: string
+                  - name: code
+                    label: プログラムコード本体
+                    type: text
