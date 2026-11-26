@@ -9,10 +9,12 @@
       --primary: #0f766e;
       --primary-dark: #115e59;
       --primary-light: #f0fdfa;
-      --accent: #0284c7;
-      --accent-light: #f0f9ff;
-      --warn: #b45309;
-      --warn-light: #fffbeb;
+      --blue: #0284c7;
+      --blue-light: #f0f9ff;
+      --red: #dc2626;
+      --red-light: #fef2f2;
+      --amber: #d97706;
+      --amber-light: #fffbeb;
       --text-main: #1e293b;
       --text-sub: #475569;
       --bg-body: #f1f5f9;
@@ -28,7 +30,8 @@
       color: var(--text-main);
       line-height: 1.65;
     }
-    /* パスワード画面 */
+
+    /* パスワードロック画面 */
     #lock-screen {
       position: fixed;
       inset: 0;
@@ -48,17 +51,8 @@
       text-align: center;
       box-shadow: 0 10px 25px rgba(0,0,0,0.3);
     }
-    .lock-box h2 {
-      margin: 0 0 10px;
-      border: none;
-      justify-content: center;
-      color: #0f172a;
-    }
-    .lock-box p {
-      font-size: 0.9rem;
-      color: var(--text-sub);
-      margin: 0 0 20px;
-    }
+    .lock-box h2 { margin: 0 0 10px; font-size: 1.25rem; color: #0f172a; }
+    .lock-box p { font-size: 0.9rem; color: var(--text-sub); margin: 0 0 20px; }
     .lock-input {
       width: 100%;
       padding: 12px 14px;
@@ -68,10 +62,7 @@
       margin-bottom: 12px;
       text-align: center;
     }
-    .lock-input:focus {
-      outline: none;
-      border-color: var(--primary);
-    }
+    .lock-input:focus { outline: none; border-color: var(--primary); }
     .lock-btn {
       width: 100%;
       padding: 12px;
@@ -84,281 +75,342 @@
       cursor: pointer;
     }
     .lock-btn:hover { background: var(--primary-dark); }
-    .lock-error {
-      color: #dc2626;
-      font-size: 0.85rem;
-      margin-top: 10px;
-      min-height: 1.2em;
-    }
+    .lock-error { color: #dc2626; font-size: 0.85rem; margin-top: 10px; min-height: 1.2em; }
 
     /* ヘッダー */
     header {
       background: linear-gradient(135deg, #0f172a 0%, var(--primary-dark) 100%);
       color: #ffffff;
-      padding: 36px 20px 48px;
+      padding: 30px 20px 44px;
       text-align: center;
     }
-    header h1 {
-      margin: 0 0 6px;
-      font-size: 1.75rem;
-      letter-spacing: 0.03em;
-    }
-    header p {
-      margin: 0;
-      opacity: 0.9;
-      font-size: 0.92rem;
-    }
+    header h1 { margin: 0 0 6px; font-size: 1.7rem; letter-spacing: 0.03em; }
+    header p { margin: 0; opacity: 0.9; font-size: 0.92rem; }
+
     main {
-      max-width: 900px;
-      margin: -26px auto 60px;
+      max-width: 920px;
+      margin: -24px auto 60px;
       padding: 0 16px;
     }
-    section {
+
+    /* 1. 一番上の連絡事項ボックス */
+    .notice-card {
       background: var(--bg-card);
       border-radius: 12px;
-      padding: 24px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+      padding: 20px 24px;
+      margin-bottom: 22px;
+      box-shadow: 0 3px 10px rgba(15, 23, 42, 0.07);
+      border-left: 6px solid var(--primary);
     }
-    h2 {
-      margin: 0 0 16px;
-      font-size: 1.18rem;
-      color: #0f172a;
-      border-bottom: 2px solid #e2e8f0;
-      padding-bottom: 8px;
+    .notice-header {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: var(--primary-dark);
+      margin: 0 0 12px;
       display: flex;
       align-items: center;
       gap: 8px;
     }
-
-    /* 本日のミッション */
-    .mission-section {
-      border-top: 5px solid #f59e0b;
-      background: #ffffff;
+    .notice-list { list-style: none; padding: 0; margin: 0; }
+    .notice-item {
+      padding: 10px 0;
+      border-bottom: 1px solid #e2e8f0;
     }
-    .mission-target {
-      display: inline-block;
-      background: var(--warn-light);
-      color: var(--warn);
-      border: 1px solid #fde68a;
-      font-size: 0.8rem;
+    .notice-item:first-child { padding-top: 0; }
+    .notice-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .notice-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+    .notice-date { font-size: 0.82rem; font-weight: bold; color: var(--text-sub); }
+    .badge-important {
+      background: #dc2626;
+      color: #fff;
+      font-size: 0.72rem;
       font-weight: bold;
-      padding: 2px 10px;
-      border-radius: 999px;
-      margin-bottom: 10px;
+      padding: 1px 7px;
+      border-radius: 4px;
     }
-    .mission-goal {
-      white-space: pre-wrap;
-      margin: 0 0 16px;
-      font-size: 0.98rem;
-      font-weight: 500;
-    }
-    .submit-btn {
-      display: inline-block;
-      background: #d97706;
-      color: #ffffff;
-      text-decoration: none;
-      font-weight: bold;
-      padding: 10px 20px;
-      border-radius: 8px;
+    .notice-title { font-weight: bold; font-size: 1rem; color: #0f172a; }
+    .notice-body {
+      margin: 4px 0 0;
       font-size: 0.92rem;
-      transition: 0.2s;
+      color: var(--text-sub);
+      white-space: pre-wrap;
     }
-    .submit-btn:hover { background: #b45309; }
 
-    /* 学年・教科タブ */
-    .tab-bar {
+    /* 2. 学年タブ */
+    .step-label {
+      font-size: 0.85rem;
+      font-weight: bold;
+      color: var(--text-sub);
+      margin: 0 0 6px 4px;
+    }
+    .grade-tab-bar {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-bottom: 20px;
-      background: #e2e8f0;
+      background: #cbd5e1;
       padding: 6px;
-      border-radius: 10px;
+      border-radius: 12px;
+      margin-bottom: 18px;
     }
-    .tab-btn {
+    .grade-tab-btn {
       flex: 1;
-      min-width: 110px;
-      padding: 10px 14px;
+      min-width: 90px;
+      padding: 12px 16px;
       border: none;
-      background: transparent;
-      color: var(--text-sub);
+      background: rgba(255,255,255,0.65);
+      color: #334155;
       font-weight: bold;
-      font-size: 0.92rem;
-      border-radius: 7px;
+      font-size: 1.08rem;
+      border-radius: 8px;
       cursor: pointer;
       transition: 0.15s;
     }
-    .tab-btn:hover {
-      background: rgba(255,255,255,0.6);
-      color: #0f172a;
-    }
-    .tab-btn.active {
-      background: #ffffff;
-      color: var(--primary-dark);
-      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    .grade-tab-btn:hover { background: rgba(255,255,255,0.95); }
+    .grade-tab-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 2px 6px rgba(15, 118, 110, 0.35);
     }
 
-    /* カード一覧 */
-    .item-grid {
-      display: grid;
-      gap: 12px;
+    /* 分野フィルターチップ */
+    .field-filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 18px;
     }
-    .card-link {
+    .field-chip {
+      padding: 6px 13px;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      color: #334155;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .field-chip:hover { background: #e2e8f0; }
+    .field-chip.active { background: #0f172a; color: #ffffff; border-color: #0f172a; }
+
+    /* 3. 番号ゾーンカード（Googleクラスルーム風ストリーム） */
+    .zones-container {
+      display: grid;
+      gap: 16px;
+    }
+    .zone-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05);
+      transition: border-color 0.2s;
+    }
+    .zone-card.open {
+      border: 2px solid var(--primary);
+      box-shadow: 0 4px 14px rgba(15, 118, 110, 0.1);
+    }
+    .zone-header {
+      padding: 16px 20px;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .zone-header:hover { background: #f8fafc; }
+    .zone-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex: 1;
+    }
+    .zone-num-badge {
+      min-width: 46px;
+      height: 46px;
+      padding: 0 10px;
+      background: var(--primary);
+      color: #ffffff;
+      font-size: 1.25rem;
+      font-weight: bold;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .zone-title-area { flex: 1; }
+    .zone-field-tag {
+      display: inline-block;
+      font-size: 0.74rem;
+      font-weight: bold;
+      padding: 1px 8px;
+      border-radius: 4px;
+      margin-bottom: 3px;
+    }
+    .theme-material { background: #fef3c7; color: #92400e; }
+    .theme-energy   { background: #ffedd5; color: #9a3412; }
+    .theme-bio      { background: #dcfce7; color: #166534; }
+    .theme-info     { background: #e0f2fe; color: #075985; }
+    .theme-common   { background: #e2e8f0; color: #334155; }
+
+    .zone-title {
+      font-size: 1.12rem;
+      font-weight: bold;
+      color: #0f172a;
+      margin: 0;
+    }
+    .zone-count-info {
+      font-size: 0.8rem;
+      color: var(--text-sub);
+      margin-top: 2px;
+    }
+    .zone-toggle-icon {
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: var(--primary);
+      background: var(--primary-light);
+      padding: 6px 12px;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+
+    /* ゾーンの中身（展開エリア） */
+    .zone-body {
+      display: none;
+      padding: 0 20px 20px;
+      border-top: 1px solid #e2e8f0;
+      background: #fafafa;
+    }
+    .zone-card.open .zone-body { display: block; }
+
+    .zone-instruction {
+      background: #fffbeb;
+      border-left: 4px solid #f59e0b;
+      padding: 12px 14px;
+      border-radius: 6px;
+      font-size: 0.92rem;
+      margin: 16px 0;
+      white-space: pre-wrap;
+    }
+
+    .resource-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .res-card {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 16px;
-      padding: 15px 18px;
+      gap: 14px;
+      padding: 13px 16px;
+      background: #ffffff;
       border: 1px solid var(--border);
-      border-radius: 10px;
+      border-radius: 9px;
       text-decoration: none;
       color: inherit;
-      background: #ffffff;
-      transition: 0.18s;
+      transition: 0.15s;
     }
-    .card-link:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    .res-card:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.06);
     }
-    .card-link.web-link:hover { background: var(--accent-light); border-color: #7dd3fc; }
-    .card-link.pdf-link:hover { background: var(--primary-light); border-color: #5eead4; }
-
-    .badge {
+    .res-badge {
       display: inline-block;
       font-size: 0.74rem;
       font-weight: bold;
       padding: 2px 8px;
       border-radius: 4px;
       margin-bottom: 4px;
-      margin-right: 6px;
     }
-    .badge-tab { background: #e2e8f0; color: #334155; }
-    .badge-web { background: var(--accent-light); color: var(--accent); border: 1px solid #bae6fd; }
-    .badge-pdf { background: var(--primary-light); color: var(--primary-dark); border: 1px solid #99f6e4; }
+    /* 種類別カラー */
+    .kind-web    { background: var(--blue-light); color: var(--blue); border: 1px solid #bae6fd; }
+    .kind-video  { background: var(--red-light); color: var(--red); border: 1px solid #fecaca; }
+    .kind-submit { background: var(--amber-light); color: var(--amber); border: 1px solid #fde68a; }
+    .kind-pdf    { background: var(--primary-light); color: var(--primary-dark); border: 1px solid #99f6e4; }
 
-    .btn-action {
+    .res-btn {
       color: #ffffff;
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       font-weight: bold;
-      padding: 8px 16px;
+      padding: 8px 14px;
       border-radius: 6px;
       white-space: nowrap;
     }
-    .btn-web { background: var(--accent); }
-    .btn-pdf { background: var(--primary); }
+    .btn-web    { background: var(--blue); }
+    .btn-video  { background: var(--red); }
+    .btn-submit { background: var(--amber); }
+    .btn-pdf    { background: var(--primary); }
 
-    .card-info { flex: 1; }
-    .card-title { font-weight: bold; font-size: 1.02rem; color: #0f172a; }
-    .card-desc { font-size: 0.85rem; color: var(--text-sub); margin-top: 3px; }
+    .res-info { flex: 1; }
+    .res-title { font-weight: bold; font-size: 1rem; color: #0f172a; }
+    .res-desc { font-size: 0.84rem; color: var(--text-sub); margin-top: 2px; }
 
-    /* サンプルコードボックス */
+    /* サンプルコード */
     .code-card {
       border: 1px solid var(--border);
-      border-radius: 10px;
+      border-radius: 9px;
       overflow: hidden;
-      background: #f8fafc;
+      background: #ffffff;
     }
     .code-header {
-      padding: 12px 16px;
+      padding: 9px 14px;
       background: #e2e8f0;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 10px;
     }
-    .code-title-wrap { font-weight: bold; font-size: 0.95rem; }
     .code-lang {
       background: #334155;
       color: #fff;
       font-size: 0.72rem;
-      padding: 2px 8px;
+      padding: 2px 7px;
       border-radius: 4px;
       margin-right: 8px;
     }
     .copy-btn {
       background: #0f172a;
-      color: #ffffff;
+      color: #fff;
       border: none;
-      padding: 6px 12px;
-      border-radius: 6px;
-      font-size: 0.8rem;
+      padding: 5px 11px;
+      border-radius: 5px;
+      font-size: 0.78rem;
       font-weight: bold;
       cursor: pointer;
     }
-    .copy-btn:hover { background: #334155; }
-    .code-desc {
-      padding: 10px 16px 0;
-      font-size: 0.85rem;
-      color: var(--text-sub);
-    }
     pre {
-      margin: 10px 16px 16px;
-      padding: 14px;
+      margin: 0;
+      padding: 12px 14px;
       background: #1e293b;
       color: #f8fafc;
-      border-radius: 8px;
       overflow-x: auto;
-      font-family: Consolas, Monaco, "Courier New", monospace;
-      font-size: 0.88rem;
-      line-height: 1.5;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.86rem;
     }
 
-    /* セルフチェックリスト */
-    .check-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .check-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      padding: 10px 12px;
-      border-bottom: 1px solid #e2e8f0;
-      cursor: pointer;
-    }
-    .check-item:last-child { border-bottom: none; }
-    .check-item input[type="checkbox"] {
-      width: 18px;
-      height: 18px;
-      margin-top: 3px;
-      accent-color: var(--primary);
-      cursor: pointer;
-    }
-    .check-item.done span {
-      text-decoration: line-through;
-      color: #94a3b8;
-    }
+    .empty-msg { color: var(--text-sub); font-size: 0.9rem; margin: 12px 0 0; }
+    footer { text-align: center; color: var(--text-sub); font-size: 0.8rem; padding-bottom: 30px; }
 
-    /* お知らせ */
-    .news-list { list-style: none; padding: 0; margin: 0; }
-    .news-item { border-bottom: 1px solid #e2e8f0; padding: 12px 0; }
-    .news-item:first-child { padding-top: 0; }
-    .news-item:last-child { border-bottom: none; padding-bottom: 0; }
-    .news-date { font-size: 0.8rem; color: var(--text-sub); font-weight: bold; }
-    .news-title { font-size: 0.98rem; font-weight: bold; margin: 2px 0 4px; }
-    .news-body { font-size: 0.9rem; color: var(--text-sub); white-space: pre-wrap; margin: 0; }
-    .empty-msg { color: var(--text-sub); font-size: 0.9rem; margin: 0; }
-
-    footer {
-      text-align: center;
-      color: var(--text-sub);
-      font-size: 0.8rem;
-      padding-bottom: 30px;
-    }
     @media (max-width: 600px) {
-      .card-link { flex-direction: column; align-items: flex-start; }
-      .btn-action { width: 100%; text-align: center; }
+      .res-card { flex-direction: column; align-items: flex-start; }
+      .res-btn { width: 100%; text-align: center; }
+      .zone-header { padding: 14px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- パスワードロック画面 -->
+  <!-- パスワード認証画面 -->
   <div id="lock-screen" style="display:none;">
     <div class="lock-box">
-      <h2>授業ポータル 認証</h2>
+      <h2>技術科ポータル 認証</h2>
       <p>授業で伝えられたパスワードを入力してください。</p>
       <input type="password" id="pw-input" class="lock-input" placeholder="パスワードを入力" autocomplete="off">
       <button id="pw-submit" class="lock-btn">入室する</button>
@@ -366,7 +418,7 @@
     </div>
   </div>
 
-  <!-- メインコンテンツ -->
+  <!-- メイン画面 -->
   <div id="app-content" style="display:none;">
     <header>
       <h1 id="site-title">読み込み中...</h1>
@@ -374,46 +426,22 @@
     </header>
 
     <main>
-      <!-- 本日の授業ミッション -->
-      <section class="mission-section" id="mission-section" style="display:none;">
-        <h2>本日の授業ミッション</h2>
-        <div class="mission-target" id="mission-target"></div>
-        <p class="mission-goal" id="mission-goal"></p>
-        <a id="mission-btn" class="submit-btn" href="#" target="_blank" rel="noopener noreferrer" style="display:none;"></a>
-      </section>
+      <!-- 1. 一番上の連絡事項 -->
+      <div class="notice-card" id="notice-card">
+        <div class="notice-header">📢 連絡事項</div>
+        <ul class="notice-list" id="notice-list"></ul>
+      </div>
 
-      <!-- 学年・教科タブ切り替えバー -->
-      <div class="tab-bar" id="tab-bar"></div>
+      <!-- 2. 学年選択タブ -->
+      <div class="step-label">▼ 1. 自分の学年を選んでください</div>
+      <div class="grade-tab-bar" id="grade-tab-bar"></div>
 
-      <!-- 学習リンク・自作アプリ -->
-      <section id="links-section">
-        <h2>Web教材・学習リンク集</h2>
-        <div class="item-grid" id="links-list"></div>
-      </section>
+      <!-- 分野絞り込み（複数分野がある場合のみ表示） -->
+      <div class="field-filter-bar" id="field-filter-bar" style="display:none;"></div>
 
-      <!-- 配布プリント・PDF -->
-      <section id="materials-section">
-        <h2>配布プリント・ワークシート（PDF等）</h2>
-        <div class="item-grid" id="materials-list"></div>
-      </section>
-
-      <!-- サンプルコード -->
-      <section id="codes-section">
-        <h2>サンプルコード（コピーして使おう）</h2>
-        <div class="item-grid" id="codes-list"></div>
-      </section>
-
-      <!-- 提出前セルフチェック -->
-      <section id="checklist-section" style="display:none;">
-        <h2>提出前セルフチェックリスト</h2>
-        <ul class="check-list" id="check-list"></ul>
-      </section>
-
-      <!-- お知らせ -->
-      <section id="news-section">
-        <h2>授業連絡・お知らせ</h2>
-        <ul class="news-list" id="news-list"></ul>
-      </section>
+      <!-- 3. 番号ゾーン一覧（クラスルーム風） -->
+      <div class="step-label" id="zone-step-label">▼ 2. 先生から指示された「番号のゾーン」をタップして開いてください</div>
+      <div class="zones-container" id="zones-container"></div>
     </main>
 
     <footer>
@@ -423,7 +451,8 @@
 
   <script>
     let portalData = null;
-    let currentTab = 'すべて';
+    let selectedGradeIdx = 0;
+    let selectedField = 'すべて';
 
     fetch('data.json?v=' + new Date().getTime())
       .then(res => {
@@ -439,7 +468,6 @@
         document.getElementById('site-title').textContent = '読み込みエラー';
       });
 
-    // パスワード認証処理
     function initAuth(data) {
       const pw = (data.password || '').trim();
       const storageKey = 'tech_portal_auth_' + btoa(encodeURIComponent(data.site_title || 'site'));
@@ -486,188 +514,231 @@
       document.getElementById('site-subtitle').textContent = data.site_subtitle || '';
       document.getElementById('footer-title').textContent = data.site_title || '';
 
-      // ミッション表示
-      const m = data.mission;
-      if (m && m.active) {
-        document.getElementById('mission-section').style.display = 'block';
-        const targetEl = document.getElementById('mission-target');
-        if (m.target) {
-          targetEl.textContent = m.target;
-        } else {
-          targetEl.style.display = 'none';
-        }
-        document.getElementById('mission-goal').textContent = m.goal || '';
-        const btn = document.getElementById('mission-btn');
-        if (m.submit_url) {
-          btn.style.display = 'inline-block';
-          btn.href = m.submit_url;
-          btn.textContent = (m.submit_label || '提出ページを開く') + ' ↗';
-        }
-      }
-
-      // チェックリスト表示
-      if (data.checklist && data.checklist.length > 0) {
-        document.getElementById('checklist-section').style.display = 'block';
-        const ul = document.getElementById('check-list');
-        data.checklist.forEach(c => {
-          if (!c.item) return;
+      // 1. 連絡事項（一番上）
+      const noticeCard = document.getElementById('notice-card');
+      const noticeList = document.getElementById('notice-list');
+      const notices = data.notices || [];
+      if (notices.length === 0) {
+        noticeCard.style.display = 'none';
+      } else {
+        notices.forEach(n => {
           const li = document.createElement('li');
-          li.className = 'check-item';
-          li.innerHTML = `<input type="checkbox"><span>${escapeHtml(c.item)}</span>`;
-          li.addEventListener('click', (e) => {
-            const cb = li.querySelector('input');
-            if (e.target !== cb) cb.checked = !cb.checked;
-            li.classList.toggle('done', cb.checked);
-          });
-          ul.appendChild(li);
-        });
-      }
-
-      // お知らせ表示
-      const newsList = document.getElementById('news-list');
-      if (data.news && data.news.length > 0) {
-        data.news.forEach(n => {
-          const li = document.createElement('li');
-          li.className = 'news-item';
+          li.className = 'notice-item';
+          const impBadge = n.important ? '<span class="badge-important">重要</span>' : '';
+          const dateHtml = n.date ? `<span class="notice-date">${escapeHtml(n.date)}</span>` : '';
+          const bodyHtml = n.body ? `<p class="notice-body">${escapeHtml(n.body)}</p>` : '';
           li.innerHTML = `
-            <div class="news-date">${escapeHtml(n.date || '')}</div>
-            <div class="news-title">${escapeHtml(n.title || '')}</div>
-            <p class="news-body">${escapeHtml(n.body || '')}</p>
+            <div class="notice-meta">${impBadge}${dateHtml}<span class="notice-title">${escapeHtml(n.title || '')}</span></div>
+            ${bodyHtml}
           `;
-          newsList.appendChild(li);
+          noticeList.appendChild(li);
         });
-      } else {
-        newsList.innerHTML = '<p class="empty-msg">現在お知らせはありません。</p>';
       }
 
-      // タブ自動生成（links, materials, codes からユニークなタブ名を抽出）
-      const tabSet = new Set(['すべて']);
-      (data.links || []).forEach(x => { if (x.tab) tabSet.add(x.tab.trim()); });
-      (data.materials || []).forEach(x => { if (x.tab) tabSet.add(x.tab.trim()); });
-      (data.codes || []).forEach(x => { if (x.tab) tabSet.add(x.tab.trim()); });
+      // 2. 学年タブ
+      const grades = data.grades || [];
+      const tabBar = document.getElementById('grade-tab-bar');
+      grades.forEach((g, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'grade-tab-btn' + (idx === selectedGradeIdx ? ' active' : '');
+        btn.textContent = g.grade_name || `学年${idx + 1}`;
+        btn.addEventListener('click', () => {
+          selectedGradeIdx = idx;
+          selectedField = 'すべて';
+          document.querySelectorAll('.grade-tab-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          renderGradeZones(grades[idx]);
+        });
+        tabBar.appendChild(btn);
+      });
 
-      const tabBar = document.getElementById('tab-bar');
-      if (tabSet.size <= 1) {
-        tabBar.style.display = 'none';
+      if (grades.length > 0) {
+        renderGradeZones(grades[0]);
+      }
+    }
+
+    function getFieldThemeClass(fieldName) {
+      if (!fieldName) return 'theme-common';
+      if (fieldName.includes('材料')) return 'theme-material';
+      if (fieldName.includes('エネルギー')) return 'theme-energy';
+      if (fieldName.includes('生物')) return 'theme-bio';
+      if (fieldName.includes('情報')) return 'theme-info';
+      return 'theme-common';
+    }
+
+    function renderGradeZones(grade) {
+      const zones = grade.zones || [];
+
+      // 分野フィルターバー生成
+      const fieldSet = new Set();
+      zones.forEach(z => { if (z.field) fieldSet.add(z.field); });
+
+      const filterBar = document.getElementById('field-filter-bar');
+      filterBar.innerHTML = '';
+      if (fieldSet.size <= 1) {
+        filterBar.style.display = 'none';
       } else {
-        tabSet.forEach(tabName => {
-          const btn = document.createElement('button');
-          btn.className = 'tab-btn' + (tabName === currentTab ? ' active' : '');
-          btn.textContent = tabName;
-          btn.addEventListener('click', () => {
-            currentTab = tabName;
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            renderTabContent();
+        filterBar.style.display = 'flex';
+        ['すべて', ...Array.from(fieldSet)].forEach(fName => {
+          const chip = document.createElement('button');
+          chip.className = 'field-chip' + (selectedField === fName ? ' active' : '');
+          chip.textContent = fName;
+          chip.addEventListener('click', () => {
+            selectedField = fName;
+            renderGradeZones(grade);
           });
-          tabBar.appendChild(btn);
+          filterBar.appendChild(chip);
         });
       }
 
-      renderTabContent();
-    }
+      // 番号ゾーン描画
+      const container = document.getElementById('zones-container');
+      container.innerHTML = '';
 
-    function matchTab(itemTab) {
-      if (currentTab === 'すべて') return true;
-      return (itemTab || '').trim() === currentTab;
-    }
+      const filteredZones = selectedField === 'すべて'
+        ? zones
+        : zones.filter(z => z.field === selectedField);
 
-    function renderTabContent() {
-      const data = portalData;
+      if (filteredZones.length === 0) {
+        container.innerHTML = '<p class="empty-msg">現在この学年に登録されている授業ゾーンはありません。</p>';
+        return;
+      }
 
-      // 1. Web教材・リンク集
-      const linksList = document.getElementById('links-list');
-      linksList.innerHTML = '';
-      const filteredLinks = (data.links || []).filter(x => x.url && matchTab(x.tab));
-      if (filteredLinks.length > 0) {
-        filteredLinks.forEach(item => {
+      filteredZones.forEach((zone, zIdx) => {
+        const webItems = (zone.web_items || []).filter(x => x.url);
+        const pdfItems = (zone.pdf_items || []).filter(x => x.file);
+        const codeItems = (zone.code_items || []).filter(x => x.code);
+        const totalCount = webItems.length + pdfItems.length + codeItems.length;
+
+        const card = document.createElement('div');
+        // 1番目のゾーンだけは最初から開いておき、他はタップで開く（生徒が構造をすぐ理解できる）
+        card.className = 'zone-card' + (zIdx === 0 ? ' open' : '');
+
+        const fieldHtml = zone.field
+          ? `<span class="zone-field-tag ${getFieldThemeClass(zone.field)}">${escapeHtml(zone.field)}</span>`
+          : '';
+
+        const header = document.createElement('div');
+        header.className = 'zone-header';
+        header.innerHTML = `
+          <div class="zone-left">
+            <div class="zone-num-badge">${escapeHtml(zone.zone_number || (zIdx + 1))}</div>
+            <div class="zone-title-area">
+              ${fieldHtml}
+              <h3 class="zone-title">${escapeHtml(zone.zone_title || '授業ゾーン')}</h3>
+              <div class="zone-count-info">教材・資料：${totalCount}件</div>
+            </div>
+          </div>
+          <div class="zone-toggle-icon">${zIdx === 0 ? '▲ 閉じる' : '▼ 開く'}</div>
+        `;
+
+        const body = document.createElement('div');
+        body.className = 'zone-body';
+
+        if (zone.instruction) {
+          const inst = document.createElement('div');
+          inst.className = 'zone-instruction';
+          inst.textContent = zone.instruction;
+          body.appendChild(inst);
+        }
+
+        const resList = document.createElement('div');
+        resList.className = 'resource-list';
+
+        // 1. 学習サイト・動画・提出リンク
+        webItems.forEach(item => {
           const a = document.createElement('a');
-          a.className = 'card-link web-link';
+          a.className = 'res-card';
           a.href = item.url;
           a.target = '_blank';
           a.rel = 'noopener noreferrer';
-          const tabBadge = (currentTab === 'すべて' && item.tab) ? `<span class="badge badge-tab">${escapeHtml(item.tab)}</span>` : '';
-          const badge = item.badge ? `<span class="badge badge-web">${escapeHtml(item.badge)}</span>` : '';
-          const desc = item.description ? `<div class="card-desc">${escapeHtml(item.description)}</div>` : '';
-          a.innerHTML = `
-            <div class="card-info">
-              <div>${tabBadge}${badge}</div>
-              <div class="card-title">${escapeHtml(item.title || item.url)}</div>
-              ${desc}
-            </div>
-            <div class="btn-action btn-web">開く ↗</div>
-          `;
-          linksList.appendChild(a);
-        });
-      } else {
-        linksList.innerHTML = '<p class="empty-msg">この分類に登録されているWeb教材はありません。</p>';
-      }
 
-      // 2. 配布プリント・PDF
-      const matList = document.getElementById('materials-list');
-      matList.innerHTML = '';
-      const filteredMats = (data.materials || []).filter(x => x.file && matchTab(x.tab));
-      if (filteredMats.length > 0) {
-        filteredMats.forEach(item => {
+          let kindClass = 'kind-web';
+          let btnClass = 'btn-web';
+          let btnText = 'サイトを開く ↗';
+
+          if (item.kind === '解説動画') {
+            kindClass = 'kind-video';
+            btnClass = 'btn-video';
+            btnText = '動画を見る ▶';
+          } else if (item.kind === '課題提出・アンケート') {
+            kindClass = 'kind-submit';
+            btnClass = 'btn-submit';
+            btnText = '提出画面へ ↗';
+          }
+
+          const descHtml = item.description ? `<div class="res-desc">${escapeHtml(item.description)}</div>` : '';
+          a.innerHTML = `
+            <div class="res-info">
+              <span class="res-badge ${kindClass}">${escapeHtml(item.kind || 'Webリンク')}</span>
+              <div class="res-title">${escapeHtml(item.title || item.url)}</div>
+              ${descHtml}
+            </div>
+            <div class="res-btn ${btnClass}">${btnText}</div>
+          `;
+          resList.appendChild(a);
+        });
+
+        // 2. 配布プリント・PDF
+        pdfItems.forEach(item => {
           const a = document.createElement('a');
-          a.className = 'card-link pdf-link';
+          a.className = 'res-card';
           a.href = item.file;
           a.target = '_blank';
           a.rel = 'noopener noreferrer';
-          const tabBadge = (currentTab === 'すべて' && item.tab) ? `<span class="badge badge-tab">${escapeHtml(item.tab)}</span>` : '';
-          const badge = item.badge ? `<span class="badge badge-pdf">${escapeHtml(item.badge)}</span>` : '';
-          const desc = item.description ? `<div class="card-desc">${escapeHtml(item.description)}</div>` : '';
-          a.innerHTML = `
-            <div class="card-info">
-              <div>${tabBadge}${badge}</div>
-              <div class="card-title">${escapeHtml(item.title || item.file)}</div>
-              ${desc}
-            </div>
-            <div class="btn-action btn-pdf">資料を開く / DL</div>
-          `;
-          matList.appendChild(a);
-        });
-      } else {
-        matList.innerHTML = '<p class="empty-msg">この分類の配布プリントはありません。</p>';
-      }
 
-      // 3. サンプルコード
-      const codesSec = document.getElementById('codes-section');
-      const codesList = document.getElementById('codes-list');
-      codesList.innerHTML = '';
-      const allCodes = data.codes || [];
-      if (allCodes.length === 0) {
-        codesSec.style.display = 'none';
-      } else {
-        codesSec.style.display = 'block';
-        const filteredCodes = allCodes.filter(x => x.code && matchTab(x.tab));
-        if (filteredCodes.length > 0) {
-          filteredCodes.forEach(item => {
-            const card = document.createElement('div');
-            card.className = 'code-card';
-            const langHtml = item.language ? `<span class="code-lang">${escapeHtml(item.language)}</span>` : '';
-            const descHtml = item.description ? `<div class="code-desc">${escapeHtml(item.description)}</div>` : '';
-            card.innerHTML = `
-              <div class="code-header">
-                <div class="code-title-wrap">${langHtml}${escapeHtml(item.title || 'サンプルコード')}</div>
-                <button class="copy-btn">コピー</button>
-              </div>
+          const label = item.badge || 'PDFプリント';
+          const descHtml = item.description ? `<div class="res-desc">${escapeHtml(item.description)}</div>` : '';
+          a.innerHTML = `
+            <div class="res-info">
+              <span class="res-badge kind-pdf">${escapeHtml(label)}</span>
+              <div class="res-title">${escapeHtml(item.title || item.file)}</div>
               ${descHtml}
-              <pre><code>${escapeHtml(item.code)}</code></pre>
-            `;
-            const copyBtn = card.querySelector('.copy-btn');
-            copyBtn.addEventListener('click', () => {
-              navigator.clipboard.writeText(item.code).then(() => {
-                copyBtn.textContent = 'コピー完了！';
-                setTimeout(() => { copyBtn.textContent = 'コピー'; }, 2000);
-              });
+            </div>
+            <div class="res-btn btn-pdf">プリントを開く</div>
+          `;
+          resList.appendChild(a);
+        });
+
+        // 3. サンプルコード
+        codeItems.forEach(item => {
+          const codeBox = document.createElement('div');
+          codeBox.className = 'code-card';
+          const langHtml = item.language ? `<span class="code-lang">${escapeHtml(item.language)}</span>` : '';
+          codeBox.innerHTML = `
+            <div class="code-header">
+              <div>${langHtml}<strong>${escapeHtml(item.title || 'サンプルコード')}</strong></div>
+              <button class="copy-btn">コピー</button>
+            </div>
+            <pre><code>${escapeHtml(item.code)}</code></pre>
+          `;
+          const copyBtn = codeBox.querySelector('.copy-btn');
+          copyBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navigator.clipboard.writeText(item.code).then(() => {
+              copyBtn.textContent = 'コピー完了！';
+              setTimeout(() => { copyBtn.textContent = 'コピー'; }, 2000);
             });
-            codesList.appendChild(card);
           });
-        } else {
-          codesList.innerHTML = '<p class="empty-msg">この分類のサンプルコードはありません。</p>';
+          resList.appendChild(codeBox);
+        });
+
+        if (totalCount === 0) {
+          resList.innerHTML = '<p class="empty-msg">このゾーンにはまだ教材が登録されていません。</p>';
         }
-      }
+
+        body.appendChild(resList);
+
+        // ゾーンの開閉イベント
+        header.addEventListener('click', () => {
+          const isOpen = card.classList.toggle('open');
+          header.querySelector('.zone-toggle-icon').textContent = isOpen ? '▲ 閉じる' : '▼ 開く';
+        });
+
+        card.appendChild(header);
+        card.appendChild(body);
+        container.appendChild(card);
+      });
     }
 
     function escapeHtml(str) {
