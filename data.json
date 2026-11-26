@@ -1,5 +1,6 @@
 {
   "site_title": "技術授業サイト",
+  "site_subtitle": "連絡：",
   "mission": {
     "active": false,
     "target": "全学年 共通ガイダンス",
@@ -9,34 +10,18 @@
   },
   "links": [
     {
-      "tab": "1年・情報の技術(基礎)",
-      "badge": "Web教材",
-      "title": "【サンプル】2進数・情報量シミュレーター",
-      "url": "https://example.com",
-      "description": "10進数と2進数の変換を視覚的に体験できる自作Webアプリです。"
+      "tab": "すべて"
     },
     {
-      "tab": "1年・材料と加工の技術",
-      "badge": "参考動画",
-      "title": "【サンプル】けがき・のこぎり挽きの基本手順",
-      "url": "https://example.com",
-      "description": "実習前に正しい姿勢と安全上の注意点を確認しましょう。"
+      "tab": "1年"
+    },
+    {
+      "tab": "2年"
     }
   ],
-  "codes": [
+  "materials": [
     {
-      "tab": "2年・情報",
-      "language": "Python",
-      "title": "【サンプル】条件分岐（if文）の基本コード",
-      "description": "右上の「コピー」ボタンを押して、エディタに貼り付けて実行してみよう。",
-      "code": "score = 85\nif score >= 80:\n    print(\"合格です！よくできました。\")\nelse:\n    print(\"もう一度復習しよう。\")"
-    }
-  ],
-  "news": [
-    {
-      "date": "2026.11.26",
-      "title": "技術科ポータルサイトを公開しました",
-      "body": "授業で使うプリント、Webアプリ、サンプルコードはすべてここに掲載します。"
+      "tab": "3年"
     }
   ]
 }
