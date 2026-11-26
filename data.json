@@ -1,40 +1,108 @@
 {
-  "site_title": "技術授業サイト",
-  "site_subtitle": "連絡はページ下にあります。",
-  "mission": {
-    "active": false,
-    "target": "全学年 共通ガイダンス",
-    "goal": "1. 自分の学年のタブを開き、本日のワークシートを確認する。\n2. Web教材またはサンプルコードを使って実習を進める。\n3. 授業終了5分前にセルフチェックを確認して提出する。",
-    "submit_label": "本日の振り返り・課題提出はこちら",
-    "submit_url": "https://example.com"
-  },
-  "links": [
+  "password": "tech2026",
+  "site_title": "技術・情報科 学習ポータル",
+  "site_subtitle": "自分の学年を選び、指示された番号のゾーンを開いてください",
+  "notices": [
     {
-      "tab": "1年",
-      "badge": "学習サイト",
-      "title": "NO.16　電気エネルギーと節電",
-      "url": "https://y05248266-create.github.io/setuden/"
-    },
-    {
-      "tab": "2年"
-    },
-    {
-      "tab": "3年"
+      "date": "11/26",
+      "important": true,
+      "title": "授業のはじめに確認すること",
+      "body": "1. 下から自分の学年（1年・2年・3年）をタップします。\n2. 黒板（または先生）から指示された「番号のゾーン」を開いて学習を進めてください。"
     }
   ],
-  "materials": [
+  "grades": [
     {
-      "tab": "1年"
+      "grade_name": "1年",
+      "zones": [
+        {
+          "zone_number": "①",
+          "zone_title": "情報の基礎・タイピングとファイル管理",
+          "field": "情報の技術",
+          "instruction": "まずはタイピング練習サイトを5分間行い、その後ワークシートPDFを開いてください。",
+          "web_items": [
+            {
+              "kind": "学習サイト・アプリ",
+              "title": "【サンプル】ローマ字・タイピング練習サイト",
+              "url": "https://example.com",
+              "description": "ホームポジションを意識して正確に入力しよう。"
+            },
+            {
+              "kind": "課題提出・アンケート",
+              "title": "【サンプル】本日の振り返り提出フォーム",
+              "url": "https://example.com",
+              "description": "授業終了5分前になったらここから送信してください。"
+            }
+          ],
+          "pdf_items": [],
+          "code_items": []
+        },
+        {
+          "zone_number": "②",
+          "zone_title": "材料と加工・のこぎり挽きとけがき",
+          "field": "材料と加工の技術",
+          "instruction": "実習前に必ず解説動画を見て、安全な姿勢を確認しましょう。",
+          "web_items": [
+            {
+              "kind": "解説動画",
+              "title": "【サンプル】両刃のこぎりの正しい使い方（動画）",
+              "url": "https://example.com",
+              "description": "挽き始めの角度と力の入れ方を確認しよう。"
+            }
+          ],
+          "pdf_items": [],
+          "code_items": []
+        }
+      ]
     },
     {
-      "tab": "2年",
-      "file": "materials/★チキンカンパニーに挑戦.pdf"
+      "grade_name": "2年",
+      "zones": [
+        {
+          "zone_number": "①",
+          "zone_title": "2進数とデジタル表現の仕組み",
+          "field": "情報の技術",
+          "instruction": "シミュレーターを動かしながら、プリントの空欄を埋めましょう。",
+          "web_items": [
+            {
+              "kind": "学習サイト・アプリ",
+              "title": "【サンプル】2進数・10進数変換シミュレーター",
+              "url": "https://example.com",
+              "description": "スイッチをON/OFFして数値の変化を確かめよう。"
+            }
+          ],
+          "pdf_items": [],
+          "code_items": []
+        },
+        {
+          "zone_number": "②",
+          "zone_title": "Pythonプログラミング入門（条件分岐）",
+          "field": "情報の技術",
+          "instruction": "下のサンプルコードをコピーして、プログラムを動かしてみよう。",
+          "web_items": [],
+          "pdf_items": [],
+          "code_items": [
+            {
+              "language": "Python",
+              "title": "気温によってメッセージを変えるプログラム",
+              "code": "temp = 28\nif temp >= 25:\n    print(\"エアコンをつけます\")\nelse:\n    print(\"ちょうどよい気温です\")"
+            }
+          ]
+        }
+      ]
     },
     {
-      "tab": "3年"
+      "grade_name": "3年",
+      "zones": [
+        {
+          "zone_number": "①",
+          "zone_title": "計測・制御のプログラミング",
+          "field": "情報の技術",
+          "instruction": "センサの値によってLEDやモーターを制御する課題に取り組みます。",
+          "web_items": [],
+          "pdf_items": [],
+          "code_items": []
+        }
+      ]
     }
-  ],
-  "news": [
-    {}
   ]
 }
