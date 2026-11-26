@@ -1,0 +1,120 @@
+media:
+  input: materials
+  output: materials
+
+content:
+  - name: tech_portal
+    label: 技術科ポータル管理（パスワード・授業・コード・PDF）
+    type: file
+    path: data.json
+    fields:
+      - name: password
+        label: 閲覧パスワード（空欄にするとパスワードなしで公開されます）
+        type: string
+      - name: site_title
+        label: サイトタイトル（例：〇〇中学校 技術科ポータル）
+        type: string
+      - name: site_subtitle
+        label: サブタイトル（例：情報・プログラミング・ものづくり学習サイト）
+        type: string
+      - name: mission
+        label: 本日の授業ミッション（一番上に大きく表示されます）
+        type: object
+        fields:
+          - name: active
+            label: ミッションを表示する
+            type: boolean
+          - name: target
+            label: 対象（例：2年1組〜4組 情報分野）
+            type: string
+          - name: goal
+            label: 今日のめあて・課題内容
+            type: text
+          - name: submit_label
+            label: 提出ボタンの文字（例：課題提出フォームを開く）
+            type: string
+          - name: submit_url
+            label: 提出先のURL（空欄ならボタン非表示）
+            type: string
+      - name: checklist
+        label: 提出前セルフチェックリスト（生徒が画面でチェックできます）
+        type: object
+        list: true
+        fields:
+          - name: item
+            label: チェック項目（例：保存時のファイル名を「クラス_番号_氏名」にしたか）
+            type: string
+      - name: links
+        label: 学習Webアプリ・ツール・参考サイト（タブ自動振り分け）
+        type: object
+        list: true
+        fields:
+          - name: tab
+            label: 学年・分野タブ名（例：1年・ものづくり / 2年・情報 / 3年・プログラム / 共通）
+            type: string
+          - name: badge
+            label: ラベル（例：自作教材、実習ツール、動画解説）
+            type: string
+          - name: title
+            label: サイト・アプリ名
+            type: string
+          - name: url
+            label: URL（https://...）
+            type: string
+          - name: description
+            label: 説明文（任意）
+            type: string
+      - name: materials
+        label: 配布プリント・ワークシートPDF（タブ自動振り分け）
+        type: object
+        list: true
+        fields:
+          - name: tab
+            label: 学年・分野タブ名（例：1年・ものづくり / 2年・情報 / 3年・プログラム / 共通）
+            type: string
+          - name: badge
+            label: 種類（例：ワークシート、設計図、操作マニュアル）
+            type: string
+          - name: title
+            label: 資料タイトル
+            type: string
+          - name: description
+            label: 補足説明（任意）
+            type: string
+          - name: file
+            label: PDFやファイルを選択（ドラッグ＆ドロップ可）
+            type: file
+      - name: codes
+        label: サンプルコード配布（ワンクリックコピー機能付き）
+        type: object
+        list: true
+        fields:
+          - name: tab
+            label: 学年・分野タブ名（例：2年・情報 / 3年・プログラム / 共通）
+            type: string
+          - name: language
+            label: 言語・種類（例：Python / JavaScript / HTML / Scratch手順）
+            type: string
+          - name: title
+            label: コードのタイトル（例：信号機制御の基本プログラム）
+            type: string
+          - name: description
+            label: 解説・使い方（任意）
+            type: string
+          - name: code
+            label: プログラムコード本体
+            type: text
+      - name: news
+        label: 授業連絡・お知らせ
+        type: object
+        list: true
+        fields:
+          - name: date
+            label: 日付（例：2026.11.26）
+            type: string
+          - name: title
+            label: 見出し
+            type: string
+          - name: body
+            label: 本文
+            type: text
