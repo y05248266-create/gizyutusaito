@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>技術科 学習ポータル</title>
+  <title>技術科授業サイト</title>
   <style>
     :root {
       --primary: #0f766e;
@@ -465,7 +465,7 @@
   <!-- パスワード認証画面 -->
   <div id="lock-screen" style="display:none;">
     <div class="lock-box">
-      <h2>技術科ポータル 認証</h2>
+      <h2>技術科授業サイト 認証</h2>
       <p>授業で伝えられたパスワードを入力してください。</p>
       <input type="password" id="pw-input" class="lock-input" placeholder="パスワードを入力" autocomplete="off">
       <button id="pw-submit" class="lock-btn">入室する</button>
@@ -595,7 +595,7 @@
 
     function renderAll() {
       const data = portalData;
-      document.title = data.site_title || '技術科 学習ポータル';
+      document.title = data.site_title || '技術科授業サイト';
       document.getElementById('site-title').textContent = data.site_title || '';
       document.getElementById('site-subtitle').textContent = data.site_subtitle || '';
       document.getElementById('footer-title').textContent = data.site_title || '';
@@ -679,7 +679,7 @@
         });
       }
 
-      // 番号ゾーン描画
+      // 番号ゾーン描画（すべて初期状態で閉じる）
       const container = document.getElementById('zones-container');
       container.innerHTML = '';
 
@@ -700,7 +700,7 @@
         const totalCount = appItems.length + webItems.length + pdfItems.length + codeItems.length;
 
         const card = document.createElement('div');
-        card.className = 'zone-card' + (zIdx === 0 ? ' open' : '');
+        card.className = 'zone-card';
 
         const fieldHtml = zone.field
           ? `<span class="zone-field-tag ${getFieldThemeClass(zone.field)}">${escapeHtml(zone.field)}</span>`
@@ -717,7 +717,7 @@
               <div class="zone-count-info">教材・アプリ・資料：${totalCount}件</div>
             </div>
           </div>
-          <div class="zone-toggle-icon">${zIdx === 0 ? '▲ 閉じる' : '▼ 開く'}</div>
+          <div class="zone-toggle-icon">▼ 開く</div>
         `;
 
         const body = document.createElement('div');
@@ -733,7 +733,7 @@
         const resList = document.createElement('div');
         resList.className = 'resource-list';
 
-        // 0. 自作HTMLアプリ（アップロードされた.htmlファイル）
+        // 0. 自作HTMLアプリ
         appItems.forEach(item => {
           const div = document.createElement('div');
           div.className = 'res-card app-card';
