@@ -1,5 +1,4 @@
 {
-  "password": "tech2026",
   "site_title": "技術科 学習サイト",
   "site_subtitle": "自分の学年を選び、指示された番号のゾーンを開いてください",
   "notices": [
@@ -19,7 +18,6 @@
           "zone_title": "情報の基礎・タイピングとファイル管理",
           "field": "情報の技術",
           "instruction": "まずは練習サイトを開いて、5分間タイピング練習を行いましょう。",
-          "app_items": [],
           "web_items": [
             {
               "kind": "学習サイト・アプリ",
@@ -27,9 +25,7 @@
               "url": "https://example.com",
               "description": "ホームポジションを意識して正確に入力しよう。"
             }
-          ],
-          "pdf_items": [],
-          "code_items": []
+          ]
         }
       ]
     },
@@ -48,19 +44,13 @@
               "description": "URL化なしでHTMLコードを貼っただけのサンプルアプリです。ボタンを押して試せます。",
               "html_code": "<!DOCTYPE html><html lang='ja'><head><meta charset='UTF-8'><style>body{font-family:sans-serif;text-align:center;padding:30px;background:#f8fafc;}h2{color:#0f172a;}.bits{display:flex;justify-content:center;gap:15px;margin:25px 0;}.bit-box{background:#fff;border:2px solid #cbd5e1;border-radius:12px;padding:15px;width:90px;}.weight{font-size:0.85rem;color:#64748b;margin-bottom:8px;}button{font-size:1.8rem;font-weight:bold;width:60px;height:60px;border-radius:10px;border:none;cursor:pointer;background:#e2e8f0;color:#334155;}button.on{background:#0284c7;color:#fff;}.result{font-size:1.5rem;font-weight:bold;background:#e0f2fe;color:#0369a1;padding:15px;border-radius:10px;display:inline-block;margin-top:10px;}</style></head><body><h2>4ビット 2進数シミュレーター</h2><p>下の「0 / 1」ボタンをクリックして切り替えてみよう</p><div class='bits'><div class='bit-box'><div class='weight'>8の位</div><button onclick='toggle(this,8)'>0</button></div><div class='bit-box'><div class='weight'>4の位</div><button onclick='toggle(this,4)'>0</button></div><div class='bit-box'><div class='weight'>2の位</div><button onclick='toggle(this,2)'>0</button></div><div class='bit-box'><div class='weight'>1の位</div><button onclick='toggle(this,1)'>0</button></div></div><div class='result'>10進数での値：<span id='total'>0</span></div><script>function toggle(btn,val){btn.classList.toggle('on');btn.textContent=btn.classList.contains('on')?'1':'0';let sum=0;document.querySelectorAll('button').forEach((b,i)=>{if(b.classList.contains('on'))sum+=[8,4,2,1][i];});document.getElementById('total').textContent=sum;}</script></body></html>"
             }
-          ],
-          "web_items": [],
-          "pdf_items": [],
-          "code_items": []
+          ]
         },
         {
           "zone_number": "②",
           "zone_title": "Pythonプログラミング入門（条件分岐）",
           "field": "情報の技術",
           "instruction": "下のサンプルコードをコピーして、プログラミング環境に貼り付けよう。",
-          "app_items": [],
-          "web_items": [],
-          "pdf_items": [],
           "code_items": [
             {
               "language": "Python",
@@ -78,11 +68,7 @@
           "zone_number": "①",
           "zone_title": "計測・制御のプログラミング",
           "field": "情報の技術",
-          "instruction": "センサを使った制御課題に取り組みます。",
-          "app_items": [],
-          "web_items": [],
-          "pdf_items": [],
-          "code_items": []
+          "instruction": "センサを使った制御課題に取り組みます。"
         }
       ]
     },
@@ -94,7 +80,6 @@
           "zone_title": "全学年共通・便利学習ツール＆サイト集",
           "field": "共通・ガイダンス",
           "instruction": "タイピング練習やプログラミングエディタなど、授業でよく使う共通ツールまとめです。",
-          "app_items": [],
           "web_items": [
             {
               "kind": "学習サイト・アプリ",
@@ -102,9 +87,7 @@
               "url": "https://scratch.mit.edu/",
               "description": "ブロックプログラミングの制作画面を開きます。"
             }
-          ],
-          "pdf_items": [],
-          "code_items": []
+          ]
         }
       ]
     }
