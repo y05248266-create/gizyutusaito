@@ -11,84 +11,18 @@
   ],
   "grades": [
     {
-      "grade_name": "1年",
-      "zones": [
-        {
-          "zone_number": "①",
-          "zone_title": "情報の基礎・タイピングとファイル管理",
-          "field": "情報の技術",
-          "instruction": "まずはタイピング練習サイトを5分間行い、その後ワークシートPDFを開いてください。",
-          "web_items": [
-            {
-              "kind": "学習サイト・アプリ",
-              "title": "【サンプル】ローマ字・タイピング練習サイト",
-              "url": "https://example.com",
-              "description": "ホームポジションを意識して正確に入力しよう。"
-            },
-            {
-              "kind": "課題提出・アンケート",
-              "title": "【サンプル】本日の振り返り提出フォーム",
-              "url": "https://example.com",
-              "description": "授業終了5分前になったらここから送信してください。"
-            }
-          ]
-        },
-        {
-          "zone_number": "②",
-          "zone_title": "材料と加工・のこぎり挽きとけがき",
-          "field": "材料と加工の技術",
-          "instruction": "実習前に必ず解説動画を見て、安全な姿勢を確認しましょう。",
-          "web_items": [
-            {
-              "kind": "解説動画",
-              "title": "【サンプル】両刃のこぎりの正しい使い方（動画）",
-              "url": "https://example.com",
-              "description": "挽き始めの角度と力の入れ方を確認しよう。"
-            }
-          ]
-        }
-      ]
+      "grade_name": "1年"
     },
     {
-      "grade_name": "2年",
-      "zones": [
-        {
-          "zone_number": "①",
-          "zone_title": "2進数とデジタル表現の仕組み",
-          "field": "情報の技術",
-          "instruction": "シミュレーターを動かしながら、プリントの空欄を埋めましょう。",
-          "web_items": [
-            {
-              "kind": "学習サイト・アプリ",
-              "title": "【サンプル】2進数・10進数変換シミュレーター",
-              "url": "https://example.com",
-              "description": "スイッチをON/OFFして数値の変化を確かめよう。"
-            }
-          ]
-        },
-        {
-          "zone_number": "②",
-          "zone_title": "Pythonプログラミング入門（条件分岐）",
-          "field": "情報の技術",
-          "instruction": "下のサンプルコードをコピーして、プログラムを動かしてみよう。",
-          "code_items": [
-            {
-              "language": "Python",
-              "title": "気温によってメッセージを変えるプログラム",
-              "code": "temp = 28\nif temp >= 25:\n    print(\"エアコンをつけます\")\nelse:\n    print(\"ちょうどよい気温です\")"
-            }
-          ]
-        }
-      ]
+      "grade_name": "2年"
     },
     {
       "grade_name": "3年",
       "zones": [
         {
-          "zone_number": "①",
-          "zone_title": "計測・制御のプログラミング",
-          "field": "情報の技術",
-          "instruction": "センサの値によってLEDやモーターを制御する課題に取り組みます。"
+          "zone_number": "３年①",
+          "zone_title": "授業の説明と情報モラルかるた",
+          "field": "情報の技術"
         }
       ]
     }
