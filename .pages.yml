@@ -4,7 +4,7 @@ media:
 
 content:
   - name: tech_portal
-    label: 技術科サイト
+    label: 技術科ポータル管理（連絡事項・学年別番号ゾーン編集）
     type: file
     path: data.json
     fields:
@@ -35,12 +35,12 @@ content:
             label: 連絡内容（任意）
             type: text
       - name: grades
-        label: 学年別ページ（1年・2年・3年など）
+        label: 学年・ツール別ページ（1年・2年・3年・その他・ツール）
         type: object
         list: true
         fields:
           - name: grade_name
-            label: 学年タブ名（例：1年、2年、3年）
+            label: タブ名（例：1年、2年、3年、その他・ツール）
             type: string
           - name: zones
             label: 授業ゾーン一覧（先生から指示された番号のゾーン）
@@ -48,7 +48,7 @@ content:
             list: true
             fields:
               - name: zone_number
-                label: 番号・記号（例：①、②、1、2、A など）
+                label: 番号・記号（例：①、②、1、2、★ など）
                 type: string
               - name: zone_title
                 label: ゾーン名・単元タイトル（例：2進数と情報量の仕組み）
@@ -67,7 +67,7 @@ content:
                 label: この時間の進め方・指示メモ（任意）
                 type: text
               - name: app_items
-                label: 【自作HTMLアプリ】HTMLコードを貼るだけで生徒がそのまま動かせる教材
+                label: 【自作HTMLアプリ】.htmlファイルをアップする項目
                 type: object
                 list: true
                 fields:
@@ -80,9 +80,9 @@ content:
                   - name: description
                     label: 生徒向けの説明文（任意）
                     type: string
-                  - name: html_code
-                    label: HTMLコード（<!DOCTYPE html>から</html>まで丸ごとコピペ）
-                    type: text
+                  - name: html_file
+                    label: HTMLファイル（.html）を選択（ドラッグ＆ドロップ可）
+                    type: file
               - name: web_items
                 label: 【外部リンク・動画・提出URL】URLを貼る項目
                 type: object
