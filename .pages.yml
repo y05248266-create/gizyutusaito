@@ -4,7 +4,7 @@ media:
 
 content:
   - name: tech_portal
-    label: 技術科ポータル管理（連絡事項・学年別番号ゾーン編集）
+    label: 技術科サイト
     type: file
     path: data.json
     fields:
@@ -23,7 +23,7 @@ content:
         list: true
         fields:
           - name: date
-            label: 日付（例：11/26）
+            label: 日付（例：11/27）
             type: string
           - name: important
             label: 重要マークをつける
@@ -66,8 +66,25 @@ content:
               - name: instruction
                 label: この時間の進め方・指示メモ（任意）
                 type: text
+              - name: app_items
+                label: 【自作HTMLアプリ】HTMLコードを貼るだけで生徒がそのまま動かせる教材
+                type: object
+                list: true
+                fields:
+                  - name: badge
+                    label: ラベル（例：自作シミュレーター、確認クイズ、実習アプリ）
+                    type: string
+                  - name: title
+                    label: アプリのタイトル
+                    type: string
+                  - name: description
+                    label: 生徒向けの説明文（任意）
+                    type: string
+                  - name: html_code
+                    label: HTMLコード（<!DOCTYPE html>から</html>まで丸ごとコピペ）
+                    type: text
               - name: web_items
-                label: 【学習サイト・動画・提出URL】このゾーンに入れるリンク一括登録
+                label: 【外部リンク・動画・提出URL】URLを貼る項目
                 type: object
                 list: true
                 fields:
@@ -81,7 +98,7 @@ content:
                         - 課題提出・アンケート
                         - 参考ページ
                   - name: title
-                    label: 表示タイトル（例：2進数変換シミュレーター）
+                    label: 表示タイトル
                     type: string
                   - name: url
                     label: URL（https://...）
@@ -90,7 +107,7 @@ content:
                     label: 補足説明（任意）
                     type: string
               - name: pdf_items
-                label: 【配布プリント・PDF】このゾーンに入れるファイル一括登録
+                label: 【配布プリント・PDF】ファイルをアップする項目
                 type: object
                 list: true
                 fields:
@@ -107,7 +124,7 @@ content:
                     label: PDFやファイルを選択（ドラッグ＆ドロップ可）
                     type: file
               - name: code_items
-                label: 【サンプルコード】このゾーンに入れるプログラム（必要な場合のみ）
+                label: 【サンプルコード】生徒がコピーして使うプログラム文
                 type: object
                 list: true
                 fields:
