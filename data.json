@@ -17,7 +17,19 @@
       "grade_name": "2年"
     },
     {
-      "grade_name": "3年"
+      "grade_name": "3年",
+      "zones": [
+        {
+          "zone_number": "3年①",
+          "zone_title": "計測制御アルゴロジック",
+          "field": "情報の技術",
+          "pdf_items": [
+            {
+              "file": "materials/index.html"
+            }
+          ]
+        }
+      ]
     },
     {
       "grade_name": "その他・ツール",
