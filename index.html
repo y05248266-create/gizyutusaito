@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>技術科 学習サイト</title>
+  <title>技術科 学習ポータル</title>
   <style>
     :root {
       --primary: #0f766e;
@@ -127,12 +127,12 @@
     .modal-btn-newtab {
       background: #334155;
       color: #fff;
-      border: none;
+      text-decoration: none;
       padding: 7px 12px;
       border-radius: 6px;
       font-size: 0.82rem;
       font-weight: bold;
-      cursor: pointer;
+      display: inline-block;
     }
     .modal-btn-newtab:hover { background: #475569; }
     .modal-btn-close {
@@ -479,11 +479,11 @@
       <div class="app-modal-bar">
         <div class="app-modal-title" id="modal-app-title">学習アプリ</div>
         <div class="app-modal-actions">
-          <button class="modal-btn-newtab" id="modal-newtab-btn">別タブで開く ↗</button>
+          <a class="modal-btn-newtab" id="modal-newtab-link" href="#" target="_blank" rel="noopener noreferrer">別タブで開く ↗</a>
           <button class="modal-btn-close" id="modal-close-btn">✕ 閉じる</button>
         </div>
       </div>
-      <iframe id="app-iframe" sandbox="allow-scripts allow-forms allow-modals allow-popups"></iframe>
+      <iframe id="app-iframe" sandbox="allow-scripts allow-forms allow-modals allow-popups allow-same-origin"></iframe>
     </div>
   </div>
 
@@ -522,29 +522,21 @@
     let portalData = null;
     let selectedGradeIdx = 0;
     let selectedField = 'すべて';
-    let currentRunningHtml = '';
 
     const appModal = document.getElementById('app-modal');
     const appIframe = document.getElementById('app-iframe');
     const modalTitle = document.getElementById('modal-app-title');
+    const modalNewTabLink = document.getElementById('modal-newtab-link');
 
     document.getElementById('modal-close-btn').addEventListener('click', () => {
       appModal.style.display = 'none';
-      appIframe.srcdoc = '';
-      currentRunningHtml = '';
+      appIframe.src = 'about:blank';
     });
 
-    document.getElementById('modal-newtab-btn').addEventListener('click', () => {
-      if (!currentRunningHtml) return;
-      const blob = new Blob([currentRunningHtml], { type: 'text/html' });
-      const blobUrl = URL.createObjectURL(blob);
-      window.open(blobUrl, '_blank');
-    });
-
-    function openHtmlApp(title, htmlCode) {
-      currentRunningHtml = htmlCode;
+    function openHtmlAppFile(title, fileUrl) {
       modalTitle.textContent = title || '学習アプリ';
-      appIframe.srcdoc = htmlCode;
+      modalNewTabLink.href = fileUrl;
+      appIframe.src = fileUrl;
       appModal.style.display = 'flex';
     }
 
@@ -701,7 +693,7 @@
       }
 
       filteredZones.forEach((zone, zIdx) => {
-        const appItems = (zone.app_items || []).filter(x => x.html_code);
+        const appItems = (zone.app_items || []).filter(x => x.html_file);
         const webItems = (zone.web_items || []).filter(x => x.url);
         const pdfItems = (zone.pdf_items || []).filter(x => x.file);
         const codeItems = (zone.code_items || []).filter(x => x.code);
@@ -741,7 +733,7 @@
         const resList = document.createElement('div');
         resList.className = 'resource-list';
 
-        // 0. 自作HTMLアプリ
+        // 0. 自作HTMLアプリ（アップロードされた.htmlファイル）
         appItems.forEach(item => {
           const div = document.createElement('div');
           div.className = 'res-card app-card';
@@ -756,7 +748,7 @@
             <button type="button" class="res-btn btn-app">アプリを起動 ▶</button>
           `;
           div.addEventListener('click', () => {
-            openHtmlApp(item.title || '学習アプリ', item.html_code);
+            openHtmlAppFile(item.title || '学習アプリ', item.html_file);
           });
           resList.appendChild(div);
         });
