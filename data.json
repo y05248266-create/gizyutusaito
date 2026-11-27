@@ -1,105 +1,24 @@
 {
   "password": "tech2026",
-  "site_title": "技術・情報科 学習ポータル",
+  "site_title": "技術科授業サイト",
   "site_subtitle": "自分の学年を選び、指示された番号のゾーンを開いてください",
-  "notices": [
-    {
-      "date": "11/27",
-      "important": true,
-      "title": "授業のはじめに確認すること",
-      "body": "1. 下から自分の学年（1年・2年・3年）または「その他・ツール」をタップします。\n2. 先生から指示された「番号のゾーン」を開いて学習を進めましょう。"
-    }
-  ],
+  "notices": [],
   "grades": [
     {
       "grade_name": "1年",
-      "zones": [
-        {
-          "zone_number": "①",
-          "zone_title": "情報の基礎・タイピングとファイル管理",
-          "field": "情報の技術",
-          "instruction": "まずは練習サイトを開いて、5分間タイピング練習を行いましょう。",
-          "app_items": [],
-          "web_items": [
-            {
-              "kind": "学習サイト・アプリ",
-              "title": "【サンプル】タイピング練習サイト",
-              "url": "https://example.com",
-              "description": "ホームポジションを意識して正確に入力しよう。"
-            }
-          ],
-          "pdf_items": [],
-          "code_items": []
-        }
-      ]
+      "zones": []
     },
     {
       "grade_name": "2年",
-      "zones": [
-        {
-          "zone_number": "①",
-          "zone_title": "2進数とデジタル表現の仕組み",
-          "field": "情報の技術",
-          "instruction": "配布プリントと学習アプリを使って、2進数の仕組みを確認しよう。",
-          "app_items": [],
-          "web_items": [],
-          "pdf_items": [],
-          "code_items": []
-        },
-        {
-          "zone_number": "②",
-          "zone_title": "Pythonプログラミング入門（条件分岐）",
-          "field": "情報の技術",
-          "instruction": "下のサンプルコードをコピーして、プログラミング環境に貼り付けよう。",
-          "app_items": [],
-          "web_items": [],
-          "pdf_items": [],
-          "code_items": [
-            {
-              "language": "Python",
-              "title": "気温によってメッセージを変えるプログラム",
-              "code": "temp = 28\nif temp >= 25:\n    print(\"エアコンをつけます\")\nelse:\n    print(\"ちょうどよい気温です\")"
-            }
-          ]
-        }
-      ]
+      "zones": []
     },
     {
       "grade_name": "3年",
-      "zones": [
-        {
-          "zone_number": "①",
-          "zone_title": "計測・制御のプログラミング",
-          "field": "情報の技術",
-          "instruction": "センサを使った制御課題に取り組みます。",
-          "app_items": [],
-          "web_items": [],
-          "pdf_items": [],
-          "code_items": []
-        }
-      ]
+      "zones": []
     },
     {
       "grade_name": "その他・ツール",
-      "zones": [
-        {
-          "zone_number": "★",
-          "zone_title": "全学年共通・便利学習ツール＆サイト集",
-          "field": "共通・ガイダンス",
-          "instruction": "タイピング練習やプログラミングエディタなど、授業でよく使う共通ツールまとめです。",
-          "app_items": [],
-          "web_items": [
-            {
-              "kind": "学習サイト・アプリ",
-              "title": "【サンプル】Scratch（スクラッチ）公式サイト",
-              "url": "https://scratch.mit.edu/",
-              "description": "ブロックプログラミングの制作画面を開きます。"
-            }
-          ],
-          "pdf_items": [],
-          "code_items": []
-        }
-      ]
+      "zones": []
     }
   ]
 }
