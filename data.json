@@ -19,10 +19,10 @@
       ]
     },
     {
-      "grade_name": "3年",
+      "grade_name": "３年",
       "zones": [
         {
-          "zone_number": "3年「１」",
+          "zone_number": "3年「1」",
           "zone_title": "計測制御(自動化)技術を理解しよう",
           "field": "情報の技術",
           "web_items": [
@@ -34,7 +34,7 @@
           ]
         },
         {
-          "zone_number": "3年「２」",
+          "zone_number": "3年「2」",
           "zone_title": "アルゴロジックチャレンジを通して、プログラミング的思考力を育てる",
           "field": "情報の技術",
           "web_items": [
@@ -47,7 +47,7 @@
           ]
         },
         {
-          "zone_number": "３年「３」",
+          "zone_number": "3年「3」",
           "zone_title": "はんだごてで木材キーホルダーを作ろう",
           "field": "材料と加工の技術",
           "web_items": [
