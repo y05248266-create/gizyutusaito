@@ -519,6 +519,7 @@
   </div>
 
   <script>
+    const GRADE_STORAGE_KEY = 'tech_portal_selected_grade_name';
     let portalData = null;
     let selectedGradeIdx = 0;
     let selectedField = 'すべて';
@@ -621,8 +622,16 @@
         });
       }
 
-      // 2. 学年・ツールタブ
+      // 2. 学年・ツールタブ（前回選択した学年を復元）
       const grades = data.grades || [];
+      const savedGradeName = localStorage.getItem(GRADE_STORAGE_KEY);
+      if (savedGradeName) {
+        const foundIdx = grades.findIndex(g => g.grade_name === savedGradeName);
+        if (foundIdx !== -1) {
+          selectedGradeIdx = foundIdx;
+        }
+      }
+
       const tabBar = document.getElementById('grade-tab-bar');
       grades.forEach((g, idx) => {
         const btn = document.createElement('button');
@@ -633,6 +642,7 @@
         btn.addEventListener('click', () => {
           selectedGradeIdx = idx;
           selectedField = 'すべて';
+          localStorage.setItem(GRADE_STORAGE_KEY, label);
           document.querySelectorAll('.grade-tab-btn').forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
           renderGradeZones(grades[idx]);
@@ -641,7 +651,7 @@
       });
 
       if (grades.length > 0) {
-        renderGradeZones(grades[0]);
+        renderGradeZones(grades[selectedGradeIdx]);
       }
     }
 
