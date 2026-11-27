@@ -9,7 +9,20 @@
       "grade_name": "2年"
     },
     {
-      "grade_name": "3年"
+      "grade_name": "3年",
+      "zones": [
+        {
+          "zone_number": "3年「１」",
+          "zone_title": "計測制御とアルゴロジック",
+          "field": "情報の技術",
+          "web_items": [
+            {
+              "kind": "学習サイト・アプリ",
+              "url": "https://y05248266-create.github.io/keisokuseigyo2/"
+            }
+          ]
+        }
+      ]
     },
     {
       "grade_name": "その他・ツール"
