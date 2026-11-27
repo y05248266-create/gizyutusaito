@@ -20,7 +20,7 @@
       "zones": [
         {
           "zone_number": "3年「１」",
-          "zone_title": "計測制御とアルゴロジック",
+          "zone_title": "計測制御(自動化)技術を理解しよう",
           "field": "情報の技術",
           "web_items": [
             {
@@ -32,7 +32,7 @@
         },
         {
           "zone_number": "3年「２」",
-          "zone_title": "アルゴロジック　チャレンジ",
+          "zone_title": "アルゴロジックチャレンジを通して、プログラミング的思考力を育てる。",
           "field": "情報の技術",
           "web_items": [
             {
