@@ -1,24 +1,18 @@
 {
-  "password": "tech2026",
   "site_title": "技術科授業サイト",
   "site_subtitle": "自分の学年を選び、指示された番号のゾーンを開いてください",
-  "notices": [],
   "grades": [
     {
-      "grade_name": "1年",
-      "zones": []
+      "grade_name": "1年"
     },
     {
-      "grade_name": "2年",
-      "zones": []
+      "grade_name": "2年"
     },
     {
-      "grade_name": "3年",
-      "zones": []
+      "grade_name": "3年"
     },
     {
-      "grade_name": "その他・ツール",
-      "zones": []
+      "grade_name": "その他・ツール"
     }
   ]
 }
