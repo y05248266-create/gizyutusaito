@@ -1,6 +1,13 @@
 {
   "site_title": "技術科授業サイト",
   "site_subtitle": "自分の学年を選び、指示された番号のゾーンを開いてください",
+  "notices": [
+    {
+      "important": false,
+      "title": "技術サイト作成！",
+      "body": "今後も使用します。お気に入り登録(ブックマーク)してください。"
+    }
+  ],
   "grades": [
     {
       "grade_name": "1年"
